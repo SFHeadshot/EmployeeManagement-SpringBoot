@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Employee</title>
+
+    <!-- Favicon Link -->
+    <link rel="icon" type="image/png" href="https://cdn.jsdelivr.net/npm/lucide-static@latest/icons/user-plus.svg">
+
+    <!-- Bootstrap CSS Link -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          xintegrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+          crossorigin="anonymous">
+</head>
+<body>
+
+<div class="container my-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow-lg">
+                <div class="card-header bg-success text-white">
+                    <h4 class="mb-0">Add New Employee</h4>
+                </div>
+                <div class="card-body">
+
+                    <!-- Form submits to POST /app/employees/add -->
+                    <form action="#"
+                          th:action="@{/app/employees/add}"
+                          th:object="${employee}"
+                          method="post">
+
+                        <!-- Name Field -->
+                        <div class="mb-3">
+                            <label for="name" class="form-label">Name:</label>
+                            <!-- th:field binds to the 'name' property of the 'employee' object -->
+                            <input type="text" th:field="*{name}" id="name"
+                                   class="form-control" placeholder="Enter Employee Name">
+                            <!-- Display validation errors -->
+                            <div class="text-danger mt-1" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></div>
+                        </div>
+
+                        <!-- Age Field -->
+                        <div class="mb-3">
+                            <label for="age" class="form-label">Age:</label>
+                            <!-- th:field binds to the 'age' property of the 'employee' object -->
+                            <input type="number" th:field="*{age}" id="age"
+                                   class="form-control" placeholder="Enter Age">
+                            <div class="text-danger mt-1" th:if="${#fields.hasErrors('age')}" th:errors="*{age}"></div>
+                        </div>
+
+                        <!-- Buttons -->
+                        <button type="submit" class="btn btn-success me-2">Add Employee</button>
+                        <a th:href="@{/app/employees}" class="btn btn-outline-secondary">Cancel</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Bootstrap JS Bundle -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        xintegrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+</body>
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+
+<footer class="footer fixed-bottom pb-4">
+    <div class="container">
+
+        <div class="copyright text-center">
+            © 2024 Muhammad Siraaj Khan Girdhurparsadh. All rights reserved.
+        </div>
+    </div>
+</footer>
+</html>
